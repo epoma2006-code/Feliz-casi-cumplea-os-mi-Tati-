@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feliz casi cumpleaños Tati</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: pink;
+      overflow: hidden;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+    }
+
+    h1, h2, .heart {
+      opacity: 0;
+      animation: fadeIn 2s forwards, glow 2s infinite alternate;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #fff;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+      margin: 10px;
+      animation-delay: 0.5s;
+    }
+
+    .heart {
+      font-size: 4rem;
+      color: red;
+      animation: pulse 1s infinite, fadeIn 2s forwards, glow 2s infinite alternate;
+      animation-delay: 1.5s;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: #fff;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+      margin-top: 20px;
+      animation-delay: 2.5s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #fff, 0 0 10px #ff6699, 0 0 20px #ff3366; }
+      to { text-shadow: 0 0 10px #fff, 0 0 20px #ff99cc, 0 0 30px #ff6699; }
+    }
+
+    .hearts-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .hearts-bg span {
+      position: absolute;
+      color: red;
+      font-size: 2rem;
+      animation: float 6s linear infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) scale(0.5); opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="hearts-bg" id="hearts"></div>
+  <h1>❤ Feliz casi cumpleaños Tati ❤</h1>
+  <div class="heart">❤</div>
+  <h2>Al final... Te amo ❤</h2>
+
+  <script>
+    const container = document.getElementById('hearts');
+    for (let i = 0; i < 30; i++) {
+      const heart = document.createElement('span');
+      heart.innerHTML = '❤';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = (Math.random() * 30 + 10) + 'px';
+      heart.style.animationDuration = (Math.random() * 5 + 3) + 's';
+      container.appendChild(heart);
+    }
+  </script>
+</body>
+</html>
